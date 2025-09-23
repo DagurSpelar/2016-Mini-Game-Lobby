@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2016 Mini Game Lobby</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e5e5e5;
+    margin: 0;
+    padding: 0; /* remove padding around */
+  }
+
+  .game-page {
+    max-width: 1200px;   /* wider container */
+    margin: 0 auto;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  .header {
+    display: flex;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .thumbnail {
+    width: 65%;          /* make thumbnail slightly bigger */
+    height: 400px;       /* taller */
+    background: url('https://i.ytimg.com/vi/8-8cpWnW-ss/maxresdefault.jpg') center/cover no-repeat;
+    border-radius: 4px;
+  }
+
+  .side-info {
+    flex: 1;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .game-title {
+    font-size: 30px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .creator {
+    color: #0073e6;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .play-btn {
+    display: block;
+    width: 280px; /* wider play button */
+    background: #00c000;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 16px 0;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  }
+
+  .play-btn:hover {
+    background: #00a000;
+  }
+
+  .ratings {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #888;
+    text-align: center;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-top: 10px;
+  }
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+  }
+  .tab.active {
+    border-color: #0073e6;
+    color: #0073e6;
+  }
+
+  /* Tab content */
+  .tab-content {
+    padding: 25px;
+  }
+  .description-box {
+    background: #f8f8f8;
+    padding: 18px;
+    border-radius: 4px;
+    font-size: 15px;
+  }
+</style>
+</head>
+<body>
+
+<div class="game-page">
+  <!-- Header -->
+  <div class="header">
+    <div class="thumbnail"></div>
+    <div class="side-info">
+      <div>
+        <h1 class="game-title">2016 Mini Game Lobby</h1>
+        <p class="creator">By <a href="#">Minecraft</a></p>
+      </div>
+      <div>
+        <a href="https://www.theminecraftarchitect.com/s/2016-Mini-Game-Lobby-JE-188-UNZIP.zip" class="play-btn">Play</a>
+        <p class="ratings">Ratings coming soon</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active">About</div>
+    <div class="tab">Store</div>
+    <div class="tab">Servers</div>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="tab-content">
+    <h3>Description</h3>
+    <div class="description-box">
+      🏆 Step back in time with this nostalgic lobby. Download the map and enjoy classic mini-games!
+    </div>
+  </div>
+</div>
+
+<script>
+  // Tab switching (basic)
+  const tabs = document.querySelectorAll(".tab");
+  const content = document.querySelector(".tab-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      if (tab.textContent === "About") {
+        content.innerHTML = `
+          <h3>Description</h3>
+          <div class="description-box">
+            🏆 Step back in time with this nostalgic lobby. Download the map and enjoy classic mini-games!
+          </div>`;
+      } else if (tab.textContent === "Store") {
+        content.innerHTML = "<p>Store coming soon...</p>";
+      } else if (tab.textContent === "Servers") {
+        content.innerHTML = "<p>Server list coming soon...</p>";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
